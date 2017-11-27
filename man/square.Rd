@@ -3,11 +3,14 @@
 \name{square}
 \alias{square}
 \alias{cube}
+\alias{fith}
 \title{Square or Cube a vector}
 \usage{
 square(x)
 
 cube(x)
+
+fith(x)
 }
 \arguments{
 \item{x}{The vector to be squared or cubed.}

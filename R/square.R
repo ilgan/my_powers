@@ -30,3 +30,7 @@ square <- function(x) pow(x, a=2)
 #' @rdname square
 #' @export
 cube <- function(x) pow(x, a=3)
+
+#' @rdname square
+#' @export
+fith <- function(x) pow(x, a=5)
