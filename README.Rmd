@@ -54,3 +54,19 @@ rgb2grey("img.png")
 I had a lot of problems with including png package into the project. I literally spent ours on that, read everything on the net, but at the end decided that the user will have other means, so I followed the advice from VIncenzo in class and used only base functions.
 Another problem was with the save img.rda file that I wanted to use as a default, but found no documentation what so ever on how to do it. I tried a few approaches, but it didn't work as well.
 So the final version is relying only on the base function and the example is a simple instruction on how to use it. I did however included the data file.
+
+###Tests:
+
+- The app installed just fine using: devtools::install_github("ilgan/my_powers")
+- Tests script just to make your life easy is below:
+
+``` r
+devtools::install_github("ilgan/my_powers")
+library(png)
+img <- readPNG("angry.jpg") #or use any other available png file
+luma <- rgb2luma(img)
+png('luma.png')
+plot(c(0,1),c(0,1),t='n')
+rasterImage(luma, 0,0,1,1)
+dev.off()
+```
