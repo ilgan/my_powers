@@ -1,6 +1,6 @@
 ---
-title: "Vignette Title"
-author: "Vignette Author"
+title: "powers"
+author: "IG"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
@@ -8,58 +8,70 @@ vignette: >
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
+# STAT545-hw-Ganelin-Ilya
+## Owner: IG 
+## Date: 26/11/17
 
-```{r setup, include = FALSE}
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, echo = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>"
+  comment = "#>",
+  fig.path = "README-"
 )
 ```
 
-Vignettes are long form documentation commonly included in packages. Because they are part of the distribution of the package, they need to be as compact as possible. The `html_vignette` output type provides a custom style sheet (and tweaks some options) to ensure that the resulting html is as small as possible. The `html_vignette` format:
+The goal of powers is to practice functions created in the class and create a few more useful functoins. the fuctions also performs a test if the input is actual character or not.
 
-- Never uses retina figures
-- Has a smaller default figure size
-- Uses a custom CSS stylesheet instead of the default Twitter Bootstrap style
+####Input:
+- png file name.
 
-## Vignette Info
+####Data
+- As a data we used the angry.png file for test purposes. the actual image is saved in teh test folder.
 
-Note the various macros within the `vignette` section of the metadata block above. These are required in order to instruct R how to build the vignette. Note that you should change the `title` field and the `\VignetteIndexEntry` to match the title of your vignette.
+###Example
 
-## Styles
+- This is a basic example which shows you how to solve a common problem:
 
-The `html_vignette` template includes a basic CSS theme. To override this theme you can specify your own CSS in the document metadata as follows:
-
-    output: 
-      rmarkdown::html_vignette:
-        css: mystyles.css
-
-## Figures
-
-The figure sizes have been customised so that you can easily put two images side-by-side. 
-
-```{r, fig.show='hold'}
-plot(1:10)
-plot(10:1)
+``` r
+## basic example code that saves luma component from the RGB png file
+rgb2luma("img.png")
 ```
 
-You can enable figure captions by `fig_caption: yes` in YAML:
-
-    output:
-      rmarkdown::html_vignette:
-        fig_caption: yes
-
-Then you can use the chunk option `fig.cap = "Your figure caption."` in **knitr**.
-
-## More Examples
-
-You can write math expressions, e.g. $Y = X\beta + \epsilon$, footnotes^[A footnote here.], and tables, e.g. using `knitr::kable()`.
-
-```{r, echo=FALSE, results='asis'}
-knitr::kable(head(mtcars, 10))
+``` r
+## basic example code that saves chroma1 component from the RGB png file
+rgb2chroma1("img.png")
 ```
 
-Also a quote using `>`:
+``` r
+## basic example code that saves chroma2 component from the RGB png file
+rgb2chroma2("img.png")
+```
 
-> "He who gives up [code] safety for [code] speed deserves neither."
-([via](https://twitter.com/hadleywickham/status/504368538874703872))
+``` r
+## basic example code that saves grey image out of RGB png file
+rgb2grey("img.png")
+```
+
+###Notes:
+
+I had a lot of problems with including png package into the project. I literally spent ours on that, read everything on the net, but at the end decided that the user will have other means, so I followed the advice from VIncenzo in class and used only base functions.
+Another problem was with the save img.rda file that I wanted to use as a default, but found no documentation what so ever on how to do it. I tried a few approaches, but it didn't work as well.
+So the final version is relying only on the base function and the example is a simple instruction on how to use it. I did however included the data file.
+
+###Tests:
+
+- The app installed just fine using: devtools::install_github("ilgan/my_powers")
+- Tests script just to make your life easy is below:
+
+``` r
+devtools::install_github("ilgan/my_powers")
+library(png)
+img <- readPNG("angry.jpg") #or use any other available png file
+luma <- rgb2luma(img)
+png('luma.png')
+plot(c(0,1),c(0,1),t='n')
+rasterImage(luma, 0,0,1,1)
+dev.off()
+```
