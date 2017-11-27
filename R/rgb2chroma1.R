@@ -17,24 +17,21 @@
 #'
 #' function that these functions depend on.
 #' @examples
-#' rgb2chroma1("img.png")
+#' rgb2chroma1()
 #' @rdname rgb2chroma1
 #' @export
 #'
 
-rgb2chroma1 <- function(img_png){
-	if (!grepl(typeof(img_png), "character", fixed=TRUE)){
-		"Input should be a character 'img.png'"
+rgb2chroma1 <- function(img_png=TRUE){
+	if (img_png == TRUE){
+		return(FALSE)
 	}
-	rgbimg <- png::readPNG(img_png)
-
-	#That's an array n by m by 3 . Now reduce to grey
-	greyimg <- (-0.9991*rgbimg[,,1] + (-0.33609*rgbimg[,,2]) + 0.436*rgbimg[,,3])
-
-	#Normalize
-	rgb2grey <- greyimg / max(greyimg)
-	png('chroma1.png')
-	plot(c(0,1),c(0,1),t='n')
-	rasterImage(bar, 0,0,1,1)
-	dev.off()
+	else{
+		rgbimg <- img_png
+		#That's an array n by m by 3 . Now reduce to grey
+		greyimg <- (-0.9991*rgbimg[,,1] + (-0.33609*rgbimg[,,2]) + 0.436*rgbimg[,,3])
+		#Normalize
+		rgb2grey <- greyimg / max(greyimg)
+		return(img_png)
+	}
 }

@@ -5,7 +5,7 @@
 \title{Convert rgb image in png format into chroma2 image
 Needs library(png)}
 \usage{
-rgb2chroma2(img_png)
+rgb2chroma2(img_png = TRUE)
 }
 \arguments{
 \item{img_png}{The name of the png impage file in the directory to be converted}
@@ -29,5 +29,5 @@ Here are some reasons why putting a list in this section is excessive:
 function that these functions depend on.
 }
 \examples{
-rgb2chroma2("img.png")
+rgb2chroma2()
 }

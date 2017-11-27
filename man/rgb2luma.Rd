@@ -5,7 +5,7 @@
 \title{Convert rgb image in png format into luma image
 Needs library(png)}
 \usage{
-rgb2luma(img_png)
+rgb2luma(img_png = TRUE)
 }
 \arguments{
 \item{img_png}{The name of the png impage file in the directory to be converted}
@@ -25,9 +25,8 @@ Here are some reasons why putting a list in this section is excessive:
      \item These functions are quite simple.
      \item There's nothing else to say about these functions.
 }
-
 function that these functions depend on.
 }
 \examples{
-rgb2luma("img.png")
+rgb2luma()
 }
