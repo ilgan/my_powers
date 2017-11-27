@@ -31,6 +31,6 @@ rgb2luma <- function(img_png=TRUE){
 		greyimg <- (0.2126*rgbimg[,,1] + 0.7152*rgbimg[,,2] + 0.0722*rgbimg[,,3])
 		#Normalize
 		rgb2grey <- greyimg / max(greyimg)
-		return(img_png)
+		return(rgb2grey)
 	}
 }

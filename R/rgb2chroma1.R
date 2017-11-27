@@ -32,6 +32,6 @@ rgb2chroma1 <- function(img_png=TRUE){
 		greyimg <- (-0.9991*rgbimg[,,1] + (-0.33609*rgbimg[,,2]) + 0.436*rgbimg[,,3])
 		#Normalize
 		rgb2grey <- greyimg / max(greyimg)
-		return(img_png)
+		return(rgb2grey)
 	}
 }
